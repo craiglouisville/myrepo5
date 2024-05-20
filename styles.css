@@ -1,5 +1,10 @@
 body {
   font-family: Verdana;
+  background-color: azure;
+  background-image: url("background.jpg");
+
+  background-size: cover;
+  background-position: center;
 }
 
 main {
@@ -10,15 +15,18 @@ main {
 .logo {
   display: flex;
   margin-left: 5px;
+  margin-right: 5px;
   padding-left: 5px;
+  padding-right: 5px;
+  padding-top: 25px;
   justify-content: center;
 }
 
 h1 {
-  margin: 10px;
+  margin-top: 50px;
   padding: 10px;
   font-style: verdana;
-  color: blue;
+  color: blue
   text-align: center;
 }
 
@@ -144,7 +152,6 @@ table {
 .Data1 {
   color: red;
   font-size: 20px;
-  margin-left: 60px;
 }
 
 div {
@@ -156,4 +163,36 @@ div {
   color: blue;
   background-color: cornsilk;
   justify-content: center;
+}
+
+main {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  margin: 25px;
+}
+
+.fullspan {
+  grid-column-end: span 2;
+}
+
+.center {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  border-color: red;
+  margin-left: 300px;
+  margin-right: 300px;
+}
+
+@media screen and (min-width: 100px) and (max-width: 900px) {
+  #greennavigation {
+    background-color: yellow;
+  }
+}
+
+table,
+th,
+td {
+  border: 1px solid rgb(28, 9, 234);
+  padding: 8px;
 }
