@@ -26,7 +26,7 @@ h1 {
   margin-top: 50px;
   padding: 10px;
   font-style: verdana;
-  color: blue
+  color: blue;
   text-align: center;
 }
 
@@ -185,8 +185,19 @@ main {
 }
 
 @media screen and (min-width: 100px) and (max-width: 900px) {
-  #greennavigation {
-    background-color: yellow;
+  main {
+    grid-template-columns: 1fr;
+  }
+  .center {
+    margin-left: 0px;
+    margin-right: 0px;
+  }
+}
+
+@media screen and (min-width: 900px) and (max-width: 1200px) {
+  .center {
+    margin-left: 120px;
+    margin-right: 120px;
   }
 }
 
