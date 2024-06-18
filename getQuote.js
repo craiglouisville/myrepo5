@@ -25,7 +25,9 @@ async function getQuote(){
             throw new Error(`HTTP error! status: ${response.status}`);
         }
         let data = await response.json();
-        document.getElementById('quote').innerText = JSON.stringify(data, null, 2);
+        const LastRefreshed = data ["Meta Data"]["3. Last Refreshed"]
+        const criteria = data ["Time Series (5min)"][LastRefreshed]
+        document.getElementById('quote').innerText = JSON.stringify(criteria, null, 2);
     } catch (error) {
         console.error('Error fetching quote:', error);
         document.getElementById('quote').innerText = 'Error fetching quote';
