@@ -214,3 +214,76 @@ td {
   border: 1px solid rgb(28, 9, 234);
   padding: 8px;
 }
+
+.quote-container {
+  font-family: Verdana;
+  color: blue;
+  background-color: cornsilk;
+  border: 4px solid rgb(17, 90, 178);
+  margin: 10px;
+  padding: 25px;
+  padding-top: 10px;
+}
+
+#quote-ko {
+  font-size: 18px;
+  font-family: Verdana;
+  color: blue;
+  background-color: cornsilk;
+  border: 4px solid rgb(17, 90, 178);
+  margin: 10px;
+  padding: 25px;
+  padding-top: 10px;
+}
+
+#quote-jnj {
+  font-size: 18px;
+  font-family: Verdana;
+  color: blue;
+  background-color: cornsilk;
+  border: 4px solid rgb(17, 90, 178);
+  margin: 10px;
+  padding: 25px;
+  padding-top: 10px;
+}
+
+#quote-jpm {
+  font-size: 18px;
+  font-family: Verdana;
+  color: blue;
+  background-color: cornsilk;
+  border: 4px solid rgb(17, 90, 178);
+  margin: 10px;
+  padding: 25px;
+  padding-top: 10px;
+}
+/* 
+quote {
+  font-family: Verdana;
+  color: blue;
+  background-color: cornsilk;
+  border: 4px solid rgb(17, 90, 178);
+  margin: 10px;
+  padding: 25px;
+  padding-top: 10px;
+}
+
+.fullspan center {
+  font-family: Verdana;
+  color: blue;
+  background-color: cornsilk;
+  border: 4px solid rgb(17, 90, 178);
+  margin: 10px;
+  padding: 25px;
+  padding-top: 10px;
+}
+
+fullspan center {
+  font-family: Verdana;
+  color: blue;
+  background-color: cornsilk;
+  border: 4px solid rgb(17, 90, 178);
+  margin: 10px;
+  padding: 25px;
+  padding-top: 10px;
+} */
