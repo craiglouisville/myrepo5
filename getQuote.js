@@ -42,9 +42,79 @@
 
 // ---------
 
-async function getQuote(symbol, elementId) {
+// MASTER this one is the one that works (below) - all others are tests. MASTER
+
+// async function getQuote(symbol, elementId) {
+//     try {
+//         const url = `https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol=${symbol}&interval=5min&apikey=RLQUZ3LH4BWSZTG4`;
+//         let response = await fetch(url);
+//         if (!response.ok) {
+//             throw new Error(`HTTP error! status: ${response.status}`);
+//         }
+//         let data = await response.json();
+//         const lastRefreshed = data["Meta Data"]["3. Last Refreshed"];
+//         const criteria = data["Time Series (5min)"][lastRefreshed];
+//         let formattedData = '';
+//         for (const [key, value] of Object.entries(criteria)) {
+//             formattedData += `${key}: ${value}\n`;
+//         }
+//         document.getElementById(elementId).innerText = formattedData;
+//     } catch (error) {
+//         console.error('Error fetching quote:', error);
+//         document.getElementById(elementId).innerText = 'Error fetching quote';
+//     }
+// }
+
+// window.onload = () => {
+//     getQuote("KO", "quote-ko");
+//     getQuote("JNJ", "quote-jnj");
+//     getQuote("JPM", "quote-jpm");
+// };
+
+// MASTER this one is the one that works (above) - all others are tests. MASTER
+
+// ============================================================================================
+
+// MASTER1 (below) to get box with quotes in order from closing price 
+
+async function fetchStockPrice(symbol) {
+    const url = `https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol=${symbol}&interval=5min&apikey=RLQUZ3LH4BWSZTG4`;
     try {
-        const url = `https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol=${symbol}&interval=5min&apikey=RLQUZ3LH4BWSZTG4`;
+        let response = await fetch(url);
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        let data = await response.json();
+        const lastRefreshed = data["Meta Data"]["3. Last Refreshed"];
+        const closePrice = data["Time Series (5min)"][lastRefreshed]["4. close"];
+        return parseFloat(closePrice);
+    } catch (error) {
+        console.error('Error fetching quote:', error);
+        return null;
+    }
+}
+
+async function displayStockPrices() {
+    const stocks = ["KO", "JNJ", "JPM"];
+    const prices = await Promise.all(stocks.map(fetchStockPrice));
+
+    const stockPrices = stocks.map((stock, index) => ({ stock, price: prices[index] }));
+    stockPrices.sort((a, b) => b.price - a.price);
+
+    const priceBox = document.getElementById('stock-prices');
+    priceBox.innerHTML = stockPrices.map(sp => `${sp.stock}: $${sp.price.toFixed(2)}`).join('<br>');
+}
+
+window.onload = () => {
+    displayStockPrices();
+    getQuote("KO", "quote-ko");
+    getQuote("JNJ", "quote-jnj");
+    getQuote("JPM", "quote-jpm");
+};
+
+async function getQuote(symbol, elementId) {
+    const url = `https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol=${symbol}&interval=5min&apikey=RLQUZ3LH4BWSZTG4`;
+    try {
         let response = await fetch(url);
         if (!response.ok) {
             throw new Error(`HTTP error! status: ${response.status}`);
@@ -63,13 +133,9 @@ async function getQuote(symbol, elementId) {
     }
 }
 
-window.onload = () => {
-    getQuote("KO", "quote-ko");
-    getQuote("JNJ", "quote-jnj");
-    getQuote("JPM", "quote-jpm");
-};
+// MASTER1 (above) to get box with quotes in order from closing price 
 
-
+// ==========================================================================================================================================
 
 // var request = require('request');
 
