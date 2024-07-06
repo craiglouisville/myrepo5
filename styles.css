@@ -287,3 +287,11 @@ fullspan center {
   padding: 25px;
   padding-top: 10px;
 } */
+
+.box {
+  margin-left: 20px;
+  border: 2px solid;
+  color: blue;
+  padding: 10px;
+  background-color: lightyellow;
+}
